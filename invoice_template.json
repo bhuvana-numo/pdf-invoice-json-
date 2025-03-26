@@ -1,0 +1,48 @@
+{
+  "content": [
+    { "text": "Invoice", "style": "header", "alignment": "center" },
+    {
+      "table": {
+        "widths": ["50%", "50%"],
+        "body": [
+          [{ "text": "Invoice Number", "alignment": "left" }, { "text": "{{invoice}}", "alignment": "right" }],
+          [{ "text": "Address", "alignment": "left" }, { "text": "{{stationAddress}}", "alignment": "right" }],
+          [{ "text": "GST Number", "alignment": "left" }, { "text": "{{stationGSTN}}", "alignment": "right" }],
+          [{ "text": "PAN", "alignment": "left" }, { "text": "{{stationPAN}}", "alignment": "right" }]
+        ]
+      },
+      "layout": "noBorders"
+    },
+    { "text": "Bill To", "style": "subheader" },
+    {
+      "table": {
+        "widths": ["50%", "50%"],
+        "body": [
+          [{ "text": "Name", "alignment": "left" }, { "text": "{{userName}}", "alignment": "right" }],
+          [{ "text": "Additional Information", "alignment": "left" }, { "text": "{{userType}} {{vehicleDetails}}", "alignment": "right" }],
+          [{ "text": "Address", "alignment": "left" }, { "text": "{{accountAddress}}", "alignment": "right" }],
+          [{ "text": "GST Number", "alignment": "left" }, { "text": "{{accountGSTN}}", "alignment": "right" }],
+          [{ "text": "PAN", "alignment": "left" }, { "text": "{{accountPAN}}", "alignment": "right" }],
+          [{ "text": "Invoice Date", "alignment": "left" }, { "text": "{{createdOn}}", "alignment": "right" }]
+        ]
+      },
+      "layout": "noBorders"
+    },
+    { "text": "Transaction Details", "style": "subheader" },
+    {
+      "table": {
+        "widths": ["50%", "50%"],
+        "body": [
+          [{ "text": "Charging Location", "alignment": "left" }, { "text": "{{stationName}}", "alignment": "right" }],
+          [{ "text": "Charge Point", "alignment": "left" }, { "text": "{{cpid}}", "alignment": "right" }],
+          [{ "text": "Connector Type", "alignment": "left" }, { "text": "{{connectorType}}", "alignment": "right" }]
+        ]
+      },
+      "layout": "noBorders"
+    }
+  ],
+  "styles": {
+    "header": { "fontSize": 16, "bold": true },
+    "subheader": { "fontSize": 12, "bold": true }
+  }
+}
