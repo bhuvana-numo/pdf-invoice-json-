@@ -1,6 +1,14 @@
 {
   "content": [
-    { "text": "Invoice", "style": "header", "alignment": "center" },
+    {
+      "columns": [
+        { "width": "*", "text": "" },  
+        { "width": "auto", "image": "[IMAGE PLACEHOLDER]", "fit": [100, 50], "alignment": "center" },  
+        { "width": "*", "text": "" },  
+        { "width": "auto", "qr": "{{invoiceQR}}", "fit": 100, "alignment": "right" }
+      ]
+    },
+    { "text": "Invoice", "style": "header", "alignment": "center", "margin": [0, 10, 0, 10] },
     {
       "table": {
         "widths": ["50%", "50%"],
@@ -13,7 +21,7 @@
       },
       "layout": "noBorders"
     },
-    { "text": "Bill To", "style": "subheader" },
+    { "text": "Bill To", "style": "subheader", "margin": [0, 10, 0, 5] },
     {
       "table": {
         "widths": ["50%", "50%"],
@@ -24,18 +32,6 @@
           [{ "text": "GST Number", "alignment": "left" }, { "text": "{{accountGSTN}}", "alignment": "right" }],
           [{ "text": "PAN", "alignment": "left" }, { "text": "{{accountPAN}}", "alignment": "right" }],
           [{ "text": "Invoice Date", "alignment": "left" }, { "text": "{{createdOn}}", "alignment": "right" }]
-        ]
-      },
-      "layout": "noBorders"
-    },
-    { "text": "Transaction Details", "style": "subheader" },
-    {
-      "table": {
-        "widths": ["50%", "50%"],
-        "body": [
-          [{ "text": "Charging Location", "alignment": "left" }, { "text": "{{stationName}}", "alignment": "right" }],
-          [{ "text": "Charge Point", "alignment": "left" }, { "text": "{{cpid}}", "alignment": "right" }],
-          [{ "text": "Connector Type", "alignment": "left" }, { "text": "{{connectorType}}", "alignment": "right" }]
         ]
       },
       "layout": "noBorders"
