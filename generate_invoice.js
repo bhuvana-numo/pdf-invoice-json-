@@ -12,7 +12,6 @@ const fonts = {
 
 const printer = new PdfPrinter(fonts);
 
-
 const templatePath = "invoice_template.json";
 const jsonData = fs.readFileSync(templatePath, "utf8");
 let docDefinition = JSON.parse(jsonData);
@@ -37,6 +36,7 @@ const data = {
   invoiceQR: "INV-2025001" 
 };
 
+
 async function generateQRCode(text) {
   try {
     return await QRCode.toDataURL(text);
@@ -45,6 +45,7 @@ async function generateQRCode(text) {
     return "";
   }
 }
+
 
 async function replacePlaceholders(obj, data) {
   if (typeof obj === "string") {
@@ -56,7 +57,7 @@ async function replacePlaceholders(obj, data) {
     return Promise.all(obj.map(async (item) => await replacePlaceholders(item, data)));
   } else if (typeof obj === "object" && obj !== null) {
     if (obj.qr) {
-      obj.qr = await generateQRCode(data.invoiceQR || "N/A"); // Generate QR code dynamically
+      obj.qr = await generateQRCode(data.invoiceQR || "N/A");
     }
     const newObj = {};
     for (const key in obj) {
@@ -66,6 +67,7 @@ async function replacePlaceholders(obj, data) {
   }
   return obj;
 }
+
 
 async function generatePDF() {
   docDefinition = await replacePlaceholders(docDefinition, data);
