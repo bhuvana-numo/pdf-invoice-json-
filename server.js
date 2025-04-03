@@ -9,15 +9,13 @@ const app = express();
 const PORT = 3000;
 
 const TEMPLATE_PATH = path.join(__dirname, "invoice_template.json");
-const INVOICE_DATA_API_URL = "https://api.jsonbin.io/v3/qs/67ee5aaf8960c979a57d8480";
+const INVOICE_DATA_API_URL = "https://api.jsonbin.io/v3/qs/67ee892f8561e97a50f8051a";
 const QR_CODE_PATH = path.join(__dirname, "invoiceQR.png");
-
 
 async function generateQRCode(text) {
   try {
- 
+    if (!text) throw new Error("QR Code text is missing.");
     await QRCode.toFile(QR_CODE_PATH, text, { width: 150 });
-
   } catch (error) {
     console.error("Error generating QR Code:", error.message);
   }
@@ -26,7 +24,7 @@ async function generateQRCode(text) {
 function getBase64Image(imagePath) {
   try {
     if (!fs.existsSync(imagePath)) {
-      console.warn(`Image file not found: ${imagePath}`);
+      console.warn(` Image file not found: ${imagePath}`);
       return "";
     }
     const image = fs.readFileSync(imagePath);
@@ -37,32 +35,34 @@ function getBase64Image(imagePath) {
   }
 }
 
-
 async function replacePlaceholders(template, data) {
-  const actualData = data.record || data;
+  try {
+    if (!data || !data.record) throw new Error("Invalid or empty data received.");
+    const actualData = data.record;
 
-  if (actualData["invoice"]) {
-    
-    await generateQRCode(actualData["invoice"]);
-  } else {
-    console.warn("No invoice number found, skipping QR code generation.");
+    if (actualData["invoice"]) {
+      await generateQRCode(actualData["invoice"]);
+    } else {
+      console.warn(" No invoice number found, skipping QR code generation.");
+    }
+
+    actualData["invoiceQR"] = getBase64Image(QR_CODE_PATH);
+    actualData["logo.png"] = getBase64Image(path.join(__dirname, "logo.png"));
+
+    if (!actualData["invoiceQR"]) {
+      console.warn("QR Code missing in PDF.");
+    } else {
+      console.log("QR Code successfully embedded in PDF.");
+    }
+
+    const jsonString = JSON.stringify(template);
+    const updatedJsonString = jsonString.replace(/{{(.*?)}}/g, (_, key) => actualData[key.trim()] || "N/A");
+
+    return JSON.parse(updatedJsonString);
+  } catch (error) {
+    console.error("Error processing placeholders:", error.message);
+    throw error;
   }
-
-
-  actualData["invoiceQR"] = getBase64Image(QR_CODE_PATH);
-  actualData["logo.png"] = getBase64Image(path.join(__dirname, "logo.png"));
-
-  
-  if (actualData["invoiceQR"]) {
-    console.log("QR Code successfully embedded in PDF.");
-  } else {
-    console.warn(" QR Code missing in PDF.");
-  }
-
-  const jsonString = JSON.stringify(template);
-  const updatedJsonString = jsonString.replace(/{{(.*?)}}/g, (_, key) => actualData[key.trim()] || "");
-
-  return JSON.parse(updatedJsonString);
 }
 
 app.get("/", (req, res) => {
@@ -74,10 +74,19 @@ app.get("/", (req, res) => {
 
 app.get("/generate-pdf", async (req, res) => {
   try {
+    if (!fs.existsSync(TEMPLATE_PATH)) throw new Error("Template file not found.");
+
     const templateContent = fs.readFileSync(TEMPLATE_PATH, "utf-8");
     const invoiceTemplate = JSON.parse(templateContent);
 
-    const { data: invoiceData } = await axios.get(INVOICE_DATA_API_URL);
+    let invoiceData;
+    try {
+      const response = await axios.get(INVOICE_DATA_API_URL);
+      invoiceData = response.data;
+    } catch (error) {
+      console.error(" Error fetching invoice data:", error.message);
+      return res.status(500).send("Failed to fetch invoice data.");
+    }
 
     const filledTemplate = await replacePlaceholders(invoiceTemplate, invoiceData);
 
@@ -94,10 +103,9 @@ app.get("/generate-pdf", async (req, res) => {
     res.setHeader("Content-Type", "application/pdf");
     pdfDoc.pipe(res);
     pdfDoc.end();
-
   } catch (error) {
     console.error("🚨 Error generating PDF:", error.message);
-    res.status(500).send("Failed to generate PDF");
+    res.status(500).send("Failed to generate PDF.");
   }
 });
 

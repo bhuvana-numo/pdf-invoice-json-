@@ -65,6 +65,33 @@
       },
       "layout": "noBorders",
       "margin": [10, 0, 10, 10]
+    },
+    { "text": "Transaction Details", "style": "subheader", "margin": [10, 10, 0, 5] },
+    {
+      "table": {
+        "widths": ["50%", "50%"],
+        "body": [
+          [{ "text": "Charging Location", "alignment": "left" }, { "text": "{{chargingLocation}}", "alignment": "right" }],
+          [{ "text": "Charge Point", "alignment": "left" }, { "text": "{{chargePoint}}", "alignment": "right" }],
+          [{ "text": "Connector Type", "alignment": "left" }, { "text": "{{connectorType}}", "alignment": "right" }]
+        ]
+      },
+      "layout": "noBorders",
+      "margin": [10, 0, 10, 10]
+    },
+    { "text": "Payment Details", "style": "subheader", "margin": [10, 10, 0, 5] },
+    {
+      "table": {
+        "widths": ["50%", "50%"],
+        "body": [
+          [{ "text": "Transaction ID", "alignment": "left" }, { "text": "{{transactionDetails}}", "alignment": "right" }],
+          [{ "text": "Payment Method", "alignment": "left" }, { "text": "{{paymentMethod}}", "alignment": "right" }],
+          [{ "text": "Payment Status", "alignment": "left" }, { "text": "{{paymentStatus}}", "alignment": "right" }],
+          [{ "text": "Total Amount", "alignment": "left" }, { "text": "{{totalAmount}} {{currency}}", "alignment": "right" }]
+        ]
+      },
+      "layout": "noBorders",
+      "margin": [10, 0, 10, 10]
     }
   ],
   "styles": {
