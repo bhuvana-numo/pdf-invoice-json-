@@ -1,14 +1,42 @@
 {
+  "pageMargins": [20, 20, 20, 20],
   "content": [
     {
-      "columns": [
-        { "width": "*", "text": "" },  
-        { "width": "auto", "image": "[IMAGE PLACEHOLDER]", "fit": [100, 50], "alignment": "center" },  
-        { "width": "*", "text": "" },  
-        { "width": "auto", "qr": "{{invoiceQR}}", "fit": 100, "alignment": "right" }
+      "absolutePosition": { "x": 15, "y": 10 },
+      "canvas": [
+        {
+          "type": "rect",
+          "x": 0,
+          "y": 0,
+          "w": 565,
+          "h": 802,
+          "r": 5,
+          "lineWidth": 2
+        }
       ]
     },
-    { "text": "Invoice", "style": "header", "alignment": "center", "margin": [0, 10, 0, 10] },
+    {
+      "columns": [
+        { 
+          "image": "{{invoiceQR}}", 
+          "fit": [80, 80], 
+          "alignment": "right",
+          "margin": [0, 10, 0, 10]
+        }
+      ]
+    },
+    {
+      "image": "logo.png",
+      "fit": [120, 60],
+      "alignment": "center",
+      "margin": [0, -60, 0, 10]
+    },
+    { 
+      "text": "Invoice", 
+      "style": "header", 
+      "alignment": "center", 
+      "margin": [0, 10, 0, 10] 
+    },
     {
       "table": {
         "widths": ["50%", "50%"],
@@ -19,9 +47,10 @@
           [{ "text": "PAN", "alignment": "left" }, { "text": "{{stationPAN}}", "alignment": "right" }]
         ]
       },
-      "layout": "noBorders"
+      "layout": "noBorders",
+      "margin": [10, 20, 10, 10]
     },
-    { "text": "Bill To", "style": "subheader", "margin": [0, 10, 0, 5] },
+    { "text": "Bill To", "style": "subheader", "margin": [10, 10, 0, 5] },
     {
       "table": {
         "widths": ["50%", "50%"],
@@ -34,7 +63,8 @@
           [{ "text": "Invoice Date", "alignment": "left" }, { "text": "{{createdOn}}", "alignment": "right" }]
         ]
       },
-      "layout": "noBorders"
+      "layout": "noBorders",
+      "margin": [10, 0, 10, 10]
     }
   ],
   "styles": {
