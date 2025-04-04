@@ -56,11 +56,11 @@
         "widths": ["50%", "50%"],
         "body": [
           [{ "text": "Name", "alignment": "left" }, { "text": "{{userName}}", "alignment": "right" }],
-          [{ "text": "Additional Information", "alignment": "left" }, { "text": "{{userType}} {{vehicleDetails}}", "alignment": "right" }],
+          [{ "text": "Vehical details", "alignment": "left" }, { "text": "{{vehicleDetails}}", "alignment": "right" }],
           [{ "text": "Address", "alignment": "left" }, { "text": "{{accountAddress}}", "alignment": "right" }],
           [{ "text": "GST Number", "alignment": "left" }, { "text": "{{accountGSTN}}", "alignment": "right" }],
           [{ "text": "PAN", "alignment": "left" }, { "text": "{{accountPAN}}", "alignment": "right" }],
-          [{ "text": "Invoice Date", "alignment": "left" }, { "text": "{{createdOn}}", "alignment": "right" }]
+          [{ "text": "Invoice Date", "alignment": "left" }, { "text": "{{invoiceDate}}", "alignment": "right" }]
         ]
       },
       "layout": "noBorders",
@@ -84,15 +84,119 @@
       "table": {
         "widths": ["50%", "50%"],
         "body": [
-          [{ "text": "Transaction ID", "alignment": "left" }, { "text": "{{transactionDetails}}", "alignment": "right" }],
+          [{ "text": "Transaction ID", "alignment": "left" }, { "text": "{{transactionId}}", "alignment": "right" }],
           [{ "text": "Payment Method", "alignment": "left" }, { "text": "{{paymentMethod}}", "alignment": "right" }],
           [{ "text": "Payment Status", "alignment": "left" }, { "text": "{{paymentStatus}}", "alignment": "right" }],
-          [{ "text": "Total Amount", "alignment": "left" }, { "text": "{{totalAmount}} {{currency}}", "alignment": "right" }]
+          [{ "text": "Total Amount", "alignment": "left" }, { "text": "{{amount}}", "alignment": "right" }],
+          [{ "text": "Currency", "alignment": "left" }, { "text": "{{currency}}", "alignment": "right" }]
         ]
       },
       "layout": "noBorders",
       "margin": [10, 0, 10, 10]
+    },
+
+    {
+      "_field": "groupNamePrepaid",
+      "table": {
+        "widths": ["50%", "50%"],
+        "body": [
+          [{ "text": "GroupName Prepaid", "alignment": "left" }, { "text": "{{groupNamePrepaid}}", "alignment": "right" }]
+        ]
+      },
+      "layout": "noBorders",
+      "margin": [10, 0, 10, 0]
+    },
+    {
+      "_field": "penaltyDuration",
+      "table": {
+        "widths": ["50%", "50%"],
+        "body": [
+          [{ "text": "Penalty Duration", "alignment": "left" }, { "text": "{{penaltyDuration}}", "alignment": "right" }]
+        ]
+      },
+      "layout": "noBorders",
+      "margin": [10, 0, 10, 0]
+    },
+    {
+      "_field": "Penalty Fee",
+      "table": {
+        "widths": ["50%", "50%"],
+        "body": [
+          [{ "text": "Penalty Fee", "alignment": "left" }, { "text": "{{penaltyFee}}", "alignment": "right" }]
+        ]
+      },
+      "layout": "noBorders",
+      "margin": [10, 0, 10, 0]
+    },
+    {
+      "_field": "penaltyRate",
+      "table": {
+        "widths": ["50%", "50%"],
+        "body": [
+          [{ "text": "Penalty Rate", "alignment": "left" }, { "text": "{{penaltyRate}}", "alignment": "right" }]
+        ]
+      },
+      "layout": "noBorders",
+      "margin": [10, 0, 10, 0]
+    },
+    {
+      "_field": "creditUsed",
+      "table": {
+        "widths": ["50%", "50%"],
+        "body": [
+          [{ "text": "Credit Used", "alignment": "left" }, { "text": "{{creditUsed}}", "alignment": "right" }]
+        ]
+      },
+      "layout": "noBorders",
+      "margin": [10, 0, 10, 0]
+    },
+    {
+      "_field": "cashbackRedeemed",
+      "table": {
+        "widths": ["50%", "50%"],
+        "body": [
+          [{ "text": "CashBack Reedemed", "alignment": "left" }, { "text": "{{cashbackRedeemed}}", "alignment": "right" }]
+        ]
+      },
+      "layout": "noBorders",
+      "margin": [10, 0, 10, 0]
+    },
+    {
+      "_field": "walletDebit",
+      "table": {
+        "widths": ["50%", "50%"],
+        "body": [
+          [{ "text": "walletDebit", "alignment": "left" }, { "text": "{{walletDebit}}", "alignment": "right" }]
+        ]
+      },
+      "layout": "noBorders",
+      "margin": [10, 0, 10, 0]
+    },
+    {
+      "_field": "couponDetails",
+      "table": {
+        "widths": ["50%", "50%"],
+        "body": [
+          [{ "text": "Coupon Details", "alignment": "left" }, { "text": "{{couponDetails}}", "alignment": "right" }]
+        ]
+      },
+      "layout": "noBorders",
+      "margin": [10, 0, 10, 0]
+    },
+    {
+      "_field": "paymentModeAndWalletId",
+      "table": {
+        "widths": ["50%", "50%"],
+        "body": [
+          [{ "text": "PaymentMode and WalletId", "alignment": "left" }, { "text": "{{paymentModeAndWalletId}}", "alignment": "right" }]
+        ]
+      },
+      "layout": "noBorders",
+      "margin": [10, 0, 10, 0]
     }
+   
+   
+    
   ],
   "styles": {
     "header": { "fontSize": 16, "bold": true },
