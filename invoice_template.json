@@ -2,20 +2,6 @@
   "pageMargins": [20, 20, 20, 20],
   "content": [
     {
-      "absolutePosition": { "x": 15, "y": 10 },
-      "canvas": [
-        {
-          "type": "rect",
-          "x": 0,
-          "y": 0,
-          "w": 565,
-          "h": 802,
-          "r": 5,
-          "lineWidth": 2
-        }
-      ]
-    },
-    {
       "columns": [
         { 
           "image": "{{invoiceQR}}", 
@@ -44,6 +30,14 @@
           [{ "text": "Invoice Number", "alignment": "left" }, { "text": "{{invoice}}", "alignment": "right" }],
           [{ "text": "Address", "alignment": "left" }, { "text": "{{stationAddress}}", "alignment": "right" }],
           [{ "text": "GST Number", "alignment": "left" }, { "text": "{{stationGSTN}}", "alignment": "right" }],
+          {
+            "_field": "cashbackRedeemed",
+            "row": [
+              { "text": "CashBack Reedemed", "alignment": "left" },
+              { "text": "{{cashbackRedeemed}}", "alignment": "right" }
+            ]
+          }
+          ,
           [{ "text": "PAN", "alignment": "left" }, { "text": "{{stationPAN}}", "alignment": "right" }]
         ]
       },
@@ -58,7 +52,6 @@
           [{ "text": "Name", "alignment": "left" }, { "text": "{{userName}}", "alignment": "right" }],
           [{ "text": "Vehical details", "alignment": "left" }, { "text": "{{vehicleDetails}}", "alignment": "right" }],
           [{ "text": "Address", "alignment": "left" }, { "text": "{{accountAddress}}", "alignment": "right" }],
-          [{ "text": "GST Number", "alignment": "left" }, { "text": "{{accountGSTN}}", "alignment": "right" }],
           [{ "text": "PAN", "alignment": "left" }, { "text": "{{accountPAN}}", "alignment": "right" }],
           [{ "text": "Invoice Date", "alignment": "left" }, { "text": "{{invoiceDate}}", "alignment": "right" }]
         ]
@@ -74,6 +67,36 @@
           [{ "text": "Charging Location", "alignment": "left" }, { "text": "{{chargingLocation}}", "alignment": "right" }],
           [{ "text": "Charge Point", "alignment": "left" }, { "text": "{{chargePoint}}", "alignment": "right" }],
           [{ "text": "Connector Type", "alignment": "left" }, { "text": "{{connectorType}}", "alignment": "right" }]
+        ]
+      },
+      "layout": "noBorders",
+      "margin": [10, 0, 10, 10]
+    },
+    { "text": "Payment Details", "style": "subheader", "margin": [10, 10, 0, 5] },
+    {
+      "table": {
+        "widths": ["50%", "50%"],
+        "body": [
+          [{ "text": "Transaction ID", "alignment": "left" }, { "text": "{{transactionId}}", "alignment": "right" }],
+          [{ "text": "Payment Method", "alignment": "left" }, { "text": "{{paymentMethod}}", "alignment": "right" }],
+          [{ "text": "Payment Status", "alignment": "left" }, { "text": "{{paymentStatus}}", "alignment": "right" }],
+          [{ "text": "Total Amount", "alignment": "left" }, { "text": "{{amount}}", "alignment": "right" }],
+          [{ "text": "Currency", "alignment": "left" }, { "text": "{{currency}}", "alignment": "right" }]
+        ]
+      },
+      "layout": "noBorders",
+      "margin": [10, 0, 10, 10]
+    },
+    { "text": "Payment Details", "style": "subheader", "margin": [10, 10, 0, 5] },
+    {
+      "table": {
+        "widths": ["50%", "50%"],
+        "body": [
+          [{ "text": "Transaction ID", "alignment": "left" }, { "text": "{{transactionId}}", "alignment": "right" }],
+          [{ "text": "Payment Method", "alignment": "left" }, { "text": "{{paymentMethod}}", "alignment": "right" }],
+          [{ "text": "Payment Status", "alignment": "left" }, { "text": "{{paymentStatus}}", "alignment": "right" }],
+          [{ "text": "Total Amount", "alignment": "left" }, { "text": "{{amount}}", "alignment": "right" }],
+          [{ "text": "Currency", "alignment": "left" }, { "text": "{{currency}}", "alignment": "right" }]
         ]
       },
       "layout": "noBorders",
