@@ -28,17 +28,16 @@ async function replacePlaceholders(template, data) {
   if (!data || !data.record) throw new Error("Invalid or empty data received from API.");
   const actualData = data.record;
 
-  // Special dynamic fields (always considered available)
+
   const dynamicFields = new Set(["invoiceQR", "logo.png"]);
 
-  // Step 1: Find all required (non-dynamic) fields from template
   function getMandatoryFields(node) {
     let fields = new Set();
 
     if (Array.isArray(node)) {
       node.forEach(item => fields = new Set([...fields, ...getMandatoryFields(item)]));
     } else if (typeof node === "object" && node !== null) {
-      if (node._field) return fields; // skip optional field check
+      if (node._field) return fields; 
       for (const key in node) {
         fields = new Set([...fields, ...getMandatoryFields(node[key])]);
       }
@@ -53,30 +52,27 @@ async function replacePlaceholders(template, data) {
   const mandatoryFields = [...getMandatoryFields(template)].filter(field => !dynamicFields.has(field));
   const missingFields = mandatoryFields.filter(field => !(field in actualData));
   if (missingFields.length > 0) {
-    throw new Error(`🚨 Missing mandatory fields in API response: ${missingFields.join(", ")}`);
+    throw new Error(`Missing mandatory fields in API response: ${missingFields.join(", ")}`);
   }
 
-  // Step 2: Generate special fields like QR code and logo
   await generateQRCode(actualData["invoice"]);
   actualData["invoiceQR"] = getBase64Image(QR_CODE_PATH);
   actualData["logo.png"] = getBase64Image(path.join(__dirname, "logo.png"));
 
-  // Step 3: Replace placeholders recursively
   function processTemplate(node) {
     if (Array.isArray(node)) {
       return node
         .map(processTemplate)
         .filter(item => item !== null && item !== undefined);
     } else if (typeof node === "object" && node !== null) {
-      // Optional field logic
+
       if (node._field && !actualData[node._field]) return null;
 
-      // Special handling for 'row' blocks (like table rows)
+ 
       if (node.row && Array.isArray(node.row)) {
         return node.row.map(processTemplate);
       }
 
-      // Generic object case
       const newNode = {};
       for (const key in node) {
         if (key !== "_field") {
@@ -105,7 +101,7 @@ app.get("/generate-pdf", async (req, res) => {
     const templateContent = fs.readFileSync(TEMPLATE_PATH, "utf-8");
     const invoiceTemplate = JSON.parse(templateContent);
 
-    // 👇 Add this part
+
     invoiceTemplate.background = function (currentPage, pageSize) {
       return {
         canvas: [
@@ -142,5 +138,5 @@ app.get("/generate-pdf", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });

@@ -87,37 +87,6 @@
       "layout": "noBorders",
       "margin": [10, 0, 10, 10]
     },
-    { "text": "Payment Details", "style": "subheader", "margin": [10, 10, 0, 5] },
-    {
-      "table": {
-        "widths": ["50%", "50%"],
-        "body": [
-          [{ "text": "Transaction ID", "alignment": "left" }, { "text": "{{transactionId}}", "alignment": "right" }],
-          [{ "text": "Payment Method", "alignment": "left" }, { "text": "{{paymentMethod}}", "alignment": "right" }],
-          [{ "text": "Payment Status", "alignment": "left" }, { "text": "{{paymentStatus}}", "alignment": "right" }],
-          [{ "text": "Total Amount", "alignment": "left" }, { "text": "{{amount}}", "alignment": "right" }],
-          [{ "text": "Currency", "alignment": "left" }, { "text": "{{currency}}", "alignment": "right" }]
-        ]
-      },
-      "layout": "noBorders",
-      "margin": [10, 0, 10, 10]
-    },
-    { "text": "Payment Details", "style": "subheader", "margin": [10, 10, 0, 5] },
-    {
-      "table": {
-        "widths": ["50%", "50%"],
-        "body": [
-          [{ "text": "Transaction ID", "alignment": "left" }, { "text": "{{transactionId}}", "alignment": "right" }],
-          [{ "text": "Payment Method", "alignment": "left" }, { "text": "{{paymentMethod}}", "alignment": "right" }],
-          [{ "text": "Payment Status", "alignment": "left" }, { "text": "{{paymentStatus}}", "alignment": "right" }],
-          [{ "text": "Total Amount", "alignment": "left" }, { "text": "{{amount}}", "alignment": "right" }],
-          [{ "text": "Currency", "alignment": "left" }, { "text": "{{currency}}", "alignment": "right" }]
-        ]
-      },
-      "layout": "noBorders",
-      "margin": [10, 0, 10, 10]
-    },
-
     {
       "_field": "groupNamePrepaid",
       "table": {
@@ -168,17 +137,6 @@
         "widths": ["50%", "50%"],
         "body": [
           [{ "text": "Credit Used", "alignment": "left" }, { "text": "{{creditUsed}}", "alignment": "right" }]
-        ]
-      },
-      "layout": "noBorders",
-      "margin": [10, 0, 10, 0]
-    },
-    {
-      "_field": "cashbackRedeemed",
-      "table": {
-        "widths": ["50%", "50%"],
-        "body": [
-          [{ "text": "CashBack Reedemed", "alignment": "left" }, { "text": "{{cashbackRedeemed}}", "alignment": "right" }]
         ]
       },
       "layout": "noBorders",
