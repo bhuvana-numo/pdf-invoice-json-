@@ -2,20 +2,16 @@
   "pageMargins": [20, 20, 20, 20],
   "content": [
     {
-      "columns": [
-        { 
-          "image": "{{invoiceQR}}", 
-          "fit": [80, 80], 
-          "alignment": "right",
-          "margin": [0, 10, 0, 10]
-        }
-      ]
+      "image": "{{invoiceQR}}",
+      "fit": [80, 80],
+      "alignment": "right",
+      "margin": [0, 10, 0, 10]
     },
     {
       "image": "logo.png",
       "fit": [120, 60],
       "alignment": "center",
-      "margin": [0, -60, 0, 10]
+      "margin": [0, 0, 0, 10]
     },
     { 
       "text": "Invoice", 
@@ -88,95 +84,70 @@
       "margin": [10, 0, 10, 10]
     },
     {
-      "_field": "groupNamePrepaid",
       "table": {
         "widths": ["50%", "50%"],
         "body": [
-          [{ "text": "GroupName Prepaid", "alignment": "left" }, { "text": "{{groupNamePrepaid}}", "alignment": "right" }]
+          {
+            "_field": "groupNamePrepaid",
+            "row": [
+              { "text": "GroupName Prepaid", "alignment": "left" },
+              { "text": "{{groupNamePrepaid}}", "alignment": "right" }
+            ]
+          },
+          {
+            "_field": "penaltyDuration",
+            "row": [
+              { "text": "Penalty Duration", "alignment": "left" },
+              { "text": "{{penaltyDuration}}", "alignment": "right" }
+            ]
+          },
+          {
+            "_field": "penaltyRate",
+            "row": [
+              { "text": "Penalty Rate", "alignment": "left" },
+              { "text": "{{penaltyRate}}", "alignment": "right" }
+            ]
+          },
+          {
+            "_field": "penaltyFee",
+            "row": [
+              { "text": "Penalty Fee", "alignment": "left" },
+              { "text": "{{penaltyFee}}", "alignment": "right" }
+            ]
+          },
+          {
+            "_field": "creditUsed",
+            "row": [
+              { "text": "Credit Used", "alignment": "left" },
+              { "text": "{{creditUsed}}", "alignment": "right" }
+            ]
+          },
+          {
+            "_field": "walletDebit",
+            "row": [
+              { "text": "Wallet Debit", "alignment": "left" },
+              { "text": "{{walletDebit}}", "alignment": "right" }
+            ]
+          },
+          {
+            "_field": "couponDetails",
+            "row": [
+              { "text": "Coupon Details", "alignment": "left" },
+              { "text": "{{couponDetails}}", "alignment": "right" }
+            ]
+          },
+          {
+            "_field": "paymentModeAndWalletId",
+            "row": [
+              { "text": "PaymentMode and WalletId", "alignment": "left" },
+              { "text": "{{paymentModeAndWalletId}}", "alignment": "right" }
+            ]
+          }
         ]
       },
       "layout": "noBorders",
-      "margin": [10, 0, 10, 0]
-    },
-    {
-      "_field": "penaltyDuration",
-      "table": {
-        "widths": ["50%", "50%"],
-        "body": [
-          [{ "text": "Penalty Duration", "alignment": "left" }, { "text": "{{penaltyDuration}}", "alignment": "right" }]
-        ]
-      },
-      "layout": "noBorders",
-      "margin": [10, 0, 10, 0]
-    },
-    {
-      "_field": "Penalty Fee",
-      "table": {
-        "widths": ["50%", "50%"],
-        "body": [
-          [{ "text": "Penalty Fee", "alignment": "left" }, { "text": "{{penaltyFee}}", "alignment": "right" }]
-        ]
-      },
-      "layout": "noBorders",
-      "margin": [10, 0, 10, 0]
-    },
-    {
-      "_field": "penaltyRate",
-      "table": {
-        "widths": ["50%", "50%"],
-        "body": [
-          [{ "text": "Penalty Rate", "alignment": "left" }, { "text": "{{penaltyRate}}", "alignment": "right" }]
-        ]
-      },
-      "layout": "noBorders",
-      "margin": [10, 0, 10, 0]
-    },
-    {
-      "_field": "creditUsed",
-      "table": {
-        "widths": ["50%", "50%"],
-        "body": [
-          [{ "text": "Credit Used", "alignment": "left" }, { "text": "{{creditUsed}}", "alignment": "right" }]
-        ]
-      },
-      "layout": "noBorders",
-      "margin": [10, 0, 10, 0]
-    },
-    {
-      "_field": "walletDebit",
-      "table": {
-        "widths": ["50%", "50%"],
-        "body": [
-          [{ "text": "walletDebit", "alignment": "left" }, { "text": "{{walletDebit}}", "alignment": "right" }]
-        ]
-      },
-      "layout": "noBorders",
-      "margin": [10, 0, 10, 0]
-    },
-    {
-      "_field": "couponDetails",
-      "table": {
-        "widths": ["50%", "50%"],
-        "body": [
-          [{ "text": "Coupon Details", "alignment": "left" }, { "text": "{{couponDetails}}", "alignment": "right" }]
-        ]
-      },
-      "layout": "noBorders",
-      "margin": [10, 0, 10, 0]
-    },
-    {
-      "_field": "paymentModeAndWalletId",
-      "table": {
-        "widths": ["50%", "50%"],
-        "body": [
-          [{ "text": "PaymentMode and WalletId", "alignment": "left" }, { "text": "{{paymentModeAndWalletId}}", "alignment": "right" }]
-        ]
-      },
-      "layout": "noBorders",
-      "margin": [10, 0, 10, 0]
+      "margin": [10, 10, 10, 0]
     }
-   
-   
     
   ],
   "styles": {
