@@ -1,0 +1,28 @@
+{
+  "name": "pdf-invoice-json-",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhuvana-numo/pdf-invoice-json-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/bhuvana-numo/pdf-invoice-json-/issues"
+  },
+  "homepage": "https://github.com/bhuvana-numo/pdf-invoice-json-#readme",
+  "dependencies": {
+    "axios": "^1.8.4",
+    "express": "^5.1.0",
+    "pdfmake": "^0.2.18",
+    "qrcode": "^1.5.4"
+  }
+}
